@@ -30,6 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ..initialize().then((_) {
         _controller.play();
         _controller.setLooping(true);
+        _controller.setVolume(0);
         // Ensure the first frame is shown after the video is initialized
       });
   }
@@ -97,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         'Passer la vidéo',
                         style: TextStyle(
                             color: primaryColor,
-                            fontSize: 25,
+                            fontSize: 35,
                             fontFamily: 'Pluto'),
                       ),
                     ))),

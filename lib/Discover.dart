@@ -51,7 +51,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                       onPressed: () => _navigateForm(context),
                     ),
                     SizedBox(
-                      height: 30.0,
+                      height: 100.0,
                     ),
                     AnimatedGradientButton(
                       title: "Découvrez la carte VISA par Excellence",
@@ -77,6 +77,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                 offset: pi / 2,
                 color: Colors.grey,
               )),
+              buildBottomLeft()
             ],
           ),
         ),
@@ -92,7 +93,31 @@ class _DiscoverPageState extends State<DiscoverPage> {
 
 // Different functions for logic :
 // ------------------------------------------------------------------------
-  
+  Stack buildBottomLeft() {
+  return Stack(
+    children: <Widget>[
+      Positioned(
+        left: -120,
+        bottom: -120,
+        child: Container(
+          width: 400,
+          height: 350,
+          decoration:
+              BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+        ),
+      ),
+      Positioned(
+          left: 10,
+          bottom: 0,
+          child: Container(
+              child: Image.asset(
+            'assets/logo.png',
+            width: 200,
+            height: 200,
+          )))
+    ],
+  );
+}
 
 // ------------------------------------------------------------------------
   startTimeout([int milliseconds]) {

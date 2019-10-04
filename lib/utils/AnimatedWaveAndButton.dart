@@ -50,7 +50,7 @@ class AnimatedGradientButton extends StatelessWidget {
           return GradientButton(
               shapeRadius: BorderRadius.circular(40),
               increaseHeightBy: 100.0,
-              increaseWidthBy: 750.0,
+              increaseWidthBy: 800.0,
               child: Text(
                 this.title,
                 style: TextStyle(

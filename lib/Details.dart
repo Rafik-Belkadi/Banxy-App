@@ -21,7 +21,7 @@ class DetailsPage extends StatefulWidget {
 
 class _DetailsPageState extends State<DetailsPage> {
   final List<String> _listViewData = [
-    "GESTION 100% MOBILE ?",
+    "GESTION 100% MOBILE",
     "AVANTAGES INÉDITS",
     "DEUX FORMULES ADAPTÉES À VOS BESOINS",
     "TOUJOURS À VOTRE ÉCOUTE"
@@ -309,7 +309,6 @@ class _DetailsPageState extends State<DetailsPage> {
       _selectedIndex = index;
     });
     setState(() async {
-      
       var url =
           'http://banxy.appstanast.com/Admin/api/forms/interact.php?user_id=$user_id&interaction=$index';
       var response = await http.get(url);
@@ -329,8 +328,8 @@ class _DetailsPageState extends State<DetailsPage> {
       );
 
   onBottom(Widget child) => Positioned(
-    bottom: 100,
-    right: 170,
+        bottom: 200,
+        right: 170,
         child: Align(
           child: child,
         ),
@@ -359,17 +358,16 @@ class _DetailsPageState extends State<DetailsPage> {
                     width: 600,
                     child: ListView.separated(
                       separatorBuilder: (context, index) => Divider(
-                            color: secondaryBoldTextColor,
-                            height: 20,
-                          ),
+                        color: secondaryBoldTextColor,
+                        height: 20,
+                      ),
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: _listViewData.length,
                       itemBuilder: (context, index) => Container(
-                            child: _selectedIndex != null &&
-                                    _selectedIndex == index
-                                ? buildSelectedListTile(index)
-                                : buildListTile(index),
-                          ),
+                        child: _selectedIndex != null && _selectedIndex == index
+                            ? buildSelectedListTile(index)
+                            : buildListTile(index),
+                      ),
                     )),
                 buildBottomLeft(context),
                 new DetailList(
@@ -383,11 +381,14 @@ class _DetailsPageState extends State<DetailsPage> {
                     scale: 1.5,
                   ),
                 )),
-                _selectedIndex == 3 ? 
-                onBottom(AnimatedGradientButton(
-                      title: "Rejoignez la communauté Banxy",
-                      onPressed: () => _navigateForm(context),
-                    ),) : Container()
+                _selectedIndex == 3
+                    ? onBottom(
+                        AnimatedGradientButton(
+                          title: "Rejoignez la communauté Banxy",
+                          onPressed: () => _navigateForm(context),
+                        ),
+                      )
+                    : Container()
               ],
             )),
         behavior: HitTestBehavior.translucent,
@@ -465,8 +466,6 @@ class _DetailsPageState extends State<DetailsPage> {
       ),
     );
   }
-
-  
 }
 
 // ------------------------------------------------------------------------
@@ -575,7 +574,6 @@ class _DetailListState extends State<DetailList> {
                         Flexible(
                           child: Container(
                             height: 40,
-                            
                             child: FlipCard(
                               key: cardKeyOne,
                               flipOnTouch: false,
@@ -624,7 +622,6 @@ class _DetailListState extends State<DetailList> {
                                       fit: BoxFit.fill,
                                     ),
                                     borderRadius: BorderRadius.circular(10.0)),
-                              
                               ),
 
                               back: Container(
@@ -635,7 +632,6 @@ class _DetailListState extends State<DetailList> {
                                       fit: BoxFit.fill,
                                     ),
                                     borderRadius: BorderRadius.circular(10.0)),
-                              
                               ),
                             ),
                           ),
@@ -654,7 +650,6 @@ class _DetailListState extends State<DetailList> {
                                   ),
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
-                               
                               ),
 
                               back: Container(
@@ -665,7 +660,6 @@ class _DetailListState extends State<DetailList> {
                                       fit: BoxFit.fill,
                                     ),
                                     borderRadius: BorderRadius.circular(10.0)),
-                             
                               ),
                             ),
                           ),
@@ -685,37 +679,39 @@ class _DetailListState extends State<DetailList> {
     }
     if (widget.index == 3) {
       return Positioned(
-          top: 130,
-          left: 700,
+        top: -20,
+                    left: 700,
           height: 500,
           width: 550,
           child: Center(
-              child: Column(
+              child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              RichText(
-                text: TextSpan(
-                    style: TextStyle(color: Color(0xFF364c61), fontSize: 30),
-                    children: [
-                      TextSpan(
-                          text:
-                              "Notre Centre de Relation Client est disponible "),
-                      TextSpan(
-                          text: '24h/24 & 7j/7 ',
-                          style: TextStyle(
-                              color: primaryBoldTextColor,
-                              fontWeight: FontWeight.bold)),
-                      TextSpan(
-                          text:
-                              "pour vous assister partout, où que vous soyez.")
-                    ]),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 70.0),
-                child: Image.asset(
-                  "assets/Picto.png",
-                  scale: 1.5,
+              Container(
+                width: 300,
+                child: RichText(
+                  text: TextSpan(
+                      style: TextStyle(color: Color(0xFF364c61), fontSize: 27),
+                      children: [
+                        TextSpan(
+                            text:
+                                "Notre Centre de Relation Client est disponible "),
+                        TextSpan(
+                            text: '24h/24 & 7j/7 ',
+                            style: TextStyle(
+                                color: primaryBoldTextColor,
+                                fontWeight: FontWeight.bold)),
+                        TextSpan(
+                            text:
+                                "pour vous assister partout, où que vous soyez.")
+                      ]),
                 ),
-              )
+              ),
+              Container(
+                  child: Image.asset(
+                "assets/Picto.png",
+                scale: 1.7,
+              ))
             ],
           )));
     } else {
