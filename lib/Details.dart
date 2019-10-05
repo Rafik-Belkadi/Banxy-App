@@ -304,11 +304,11 @@ class _DetailsPageState extends State<DetailsPage> {
     _selectedIndex = widget.index;
   }
 
-  _onSelected(int index) {
+  _onSelected(int index) async{
     setState(() {
       _selectedIndex = index;
     });
-    setState(() async {
+    
       var url =
           'http://banxy.appstanast.com/Admin/api/forms/interact.php?user_id=$user_id&interaction=$index';
       var response = await http.get(url);
@@ -317,7 +317,7 @@ class _DetailsPageState extends State<DetailsPage> {
       } else {
         print('Failed Interaction');
       }
-    });
+    
   }
 
   onTop(Widget child) => Positioned(

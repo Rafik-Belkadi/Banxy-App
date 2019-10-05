@@ -35,11 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
       });
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }
+ 
 
   _navigateToDiscover(BuildContext context) async {
     Navigator.of(context)
@@ -54,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       print('Failed Interaction');
     }
-    _controller.dispose();
+    dispose();
   }
 
   Widget buildBottomRight(BuildContext context) {
@@ -128,5 +124,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
+  }
+   @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 }
