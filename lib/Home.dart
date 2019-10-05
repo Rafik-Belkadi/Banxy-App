@@ -50,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       print('Failed Interaction');
     }
+    dispose();
   }
 
   Widget buildBottomRight(BuildContext context) {
