@@ -360,6 +360,7 @@ class _FormPageState extends State<FormPage> {
           ),
           child: FlatButton(
             onPressed: ()async {
+              _visible = true;
               await validateForm();
               setState(() => _checking =true);
               if (_isFormValid) {

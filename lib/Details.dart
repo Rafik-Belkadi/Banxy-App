@@ -21,7 +21,7 @@ class DetailsPage extends StatefulWidget {
 
 class _DetailsPageState extends State<DetailsPage> {
   final List<String> _listViewData = [
-    "GESTION 100% MOBILE ?",
+    "GESTION 100% MOBILE",
     "AVANTAGES INÉDITS",
     "DEUX FORMULES ADAPTÉES À VOS BESOINS",
     "TOUJOURS À VOTRE ÉCOUTE"
@@ -304,12 +304,11 @@ class _DetailsPageState extends State<DetailsPage> {
     _selectedIndex = widget.index;
   }
 
-  _onSelected(int index) {
+  _onSelected(int index) async{
     setState(() {
       _selectedIndex = index;
     });
-    setState(() async {
-      
+            
       var url =
           'http://banxy.appstanast.com/Admin/api/forms/interact.php?user_id=$user_id&interaction=$index';
       var response = await http.get(url);
@@ -318,7 +317,7 @@ class _DetailsPageState extends State<DetailsPage> {
       } else {
         print('Failed Interaction');
       }
-    });
+    
   }
 
   onTop(Widget child) => Positioned(
@@ -329,7 +328,7 @@ class _DetailsPageState extends State<DetailsPage> {
       );
 
   onBottom(Widget child) => Positioned(
-    bottom: 100,
+    bottom: 200,
     right: 170,
         child: Align(
           child: child,
@@ -685,35 +684,38 @@ class _DetailListState extends State<DetailList> {
     }
     if (widget.index == 3) {
       return Positioned(
-          top: 130,
+          top: -20,
           left: 700,
           height: 500,
           width: 550,
           child: Center(
-              child: Column(
+              child: Row(
             children: <Widget>[
-              RichText(
-                text: TextSpan(
-                    style: TextStyle(color: Color(0xFF364c61), fontSize: 30),
-                    children: [
-                      TextSpan(
-                          text:
-                              "Notre Centre de Relation Client est disponible "),
-                      TextSpan(
-                          text: '24h/24 & 7j/7 ',
-                          style: TextStyle(
-                              color: primaryBoldTextColor,
-                              fontWeight: FontWeight.bold)),
-                      TextSpan(
-                          text:
-                              "pour vous assister partout, où que vous soyez.")
-                    ]),
+              Container(
+                width: 350,
+                child: RichText(
+                  text: TextSpan(
+                      style: TextStyle(color: Color(0xFF364c61), fontSize: 27),
+                      children: [
+                        TextSpan(
+                            text:
+                                "Notre Centre de Relation Client est disponible "),
+                        TextSpan(
+                            text: '24h/24 & 7j/7 ',
+                            style: TextStyle(
+                                color: primaryBoldTextColor,
+                                fontWeight: FontWeight.bold)),
+                        TextSpan(
+                            text:
+                                "pour vous assister partout, où que vous soyez.")
+                      ]),
+                ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 70.0),
+              Container(
+                width: 200,
                 child: Image.asset(
                   "assets/Picto.png",
-                  scale: 1.5,
+                  scale: 1.9,
                 ),
               )
             ],

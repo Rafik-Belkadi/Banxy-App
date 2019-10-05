@@ -30,15 +30,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ..initialize().then((_) {
         _controller.play();
         _controller.setLooping(true);
+        _controller.setVolume(0);
         // Ensure the first frame is shown after the video is initialized
       });
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }
+ 
 
   _navigateToDiscover(BuildContext context) async {
     Navigator.of(context)
@@ -53,7 +50,6 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       print('Failed Interaction');
     }
-    _controller.dispose();
   }
 
   Widget buildBottomRight(BuildContext context) {
@@ -97,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         'Passer la vidéo',
                         style: TextStyle(
                             color: primaryColor,
-                            fontSize: 25,
+                            fontSize: 35,
                             fontFamily: 'Pluto'),
                       ),
                     ))),
@@ -127,5 +123,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
+  }
+   @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 }
