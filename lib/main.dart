@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'Discover.dart';
 import 'Home.dart';
 
-const user_id = 16;
+const user_id = 6;
 
 void main() => runApp(MyApp());
 

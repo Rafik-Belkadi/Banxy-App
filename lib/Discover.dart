@@ -24,7 +24,25 @@ class _DiscoverPageState extends State<DiscoverPage> {
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIOverlays([]);
+
   }
+
+  // ------------------------------------------------------------------------
+  startTimeout([int milliseconds]) {
+    print("Hello");
+    var duration = milliseconds == null ? timeout : ms * milliseconds;
+    return new Timer(duration, handleTimeout);
+  }
+
+// ------------------------------------------------------------------------
+  void handleTimeout() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => MyHomePage()),
+    );
+  }
+
+
 
 // Building the UI
 // ------------------------------------------------------------------------
@@ -118,20 +136,6 @@ class _DiscoverPageState extends State<DiscoverPage> {
     ],
   );
 }
-
-// ------------------------------------------------------------------------
-  startTimeout([int milliseconds]) {
-    var duration = milliseconds == null ? timeout : ms * milliseconds;
-    return new Timer(duration, handleTimeout);
-  }
-
-// ------------------------------------------------------------------------
-  void handleTimeout() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => MyHomePage()),
-    );
-  }
 
   onTop(Widget child) => Positioned(
         child: Align(
